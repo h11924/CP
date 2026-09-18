@@ -12,60 +12,71 @@ void fast_io() {
     cin.tie(NULL);
 }
 
+
+
 int main() {
     fast_io();
-
+    
     int t = 1;
     cin >> t;
+    
+    while (t--) {
+        int n,k;
+        cin>>n>>k;
 
-    while(t--) {
-        int n;
-        ll k;
-        cin >> n >> k;
+        vector<pair<int,int>>aa(n);
 
-        priority_queue<pair<ll,int>> pq;
-
-        for(int i = 1; i <= n; i++) {
-            ll a;
-            cin >> a;
-            pq.push({a, -i});
+        for(int i=0;i<n;i++){
+            int a;
+            cin>>a;
+            aa[i].first=a;
+            aa[i].second=i+1;
         }
 
-        vector<int> ans;
+        for(int i=0;i<n;i++){
+            /*if(aa[i].first!=k){
+                aa[i].first=aa[i].first%k;
+            }*/
 
-        while(!pq.empty()) {
-            pair<ll,int> p = pq.top();
-            pq.pop();
+            aa[i].first = aa[i].first % k;
 
-            ll a = p.first;
-            int i = -p.second;
+            // A remainder of 0 should be treated as k.
+            // Otherwise monsters with health exactly divisible by k
+            // would incorrectly come before the others.
+            if(aa[i].first == 0){
+                aa[i].first = k;
 
-            a -= k;
-
-            if(a <= 0) {
-                ans.push_back(i);
-            }
-            else {
-                pq.push({a, -i});
-            }
         }
-
-        for(int i = 0; i < n; i++) {
-            cout << ans[i] << " ";
-        }
-
-        cout << endl;
     }
 
-    return 0;
+        /*vector<int> ans;
+        sort(aa.begin(),aa.end());
+        reverse(aa.begin(),aa.end());*/
 
+        sort(aa.begin(),aa.end(),[](pair<int,int> a,pair<int,int> b){
+            if(a.first != b.first){
+                return a.first > b.first;
+            }
+            return a.second < b.second;
+        });
+
+        for(int i=0;i<n;i++){
+            cout<<aa[i].second<<" ";
+
+        }
+
+        cout<<endl;
+    }
+    
+    return 0;
 }
+
 
 /*
 
 Move-Item ".\B_Monsters.cpp" ".\1000\B_Monsters.cpp"
-git add "1000/B_Monsters.cpp.cpp"
-git commit -m "B_Monsters.cpp TLE solution"
+git add "1000/B_Monsters.cpp"
+git commit -m "B_Monsters.cpp"
 git pull --rebase origin master
 git push origin master
 
