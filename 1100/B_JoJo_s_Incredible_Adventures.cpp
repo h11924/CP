@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -13,61 +14,41 @@ void fast_io() {
 }
 
 void solve() {
-    
 }
 
 int main() {
     fast_io();
-    
+
     int t = 1;
     cin >> t;
-    
+
     while (t--) {
         string s;
-        cin>>s;
+        cin >> s;
 
-      
         ll n = s.size();
-        ll l = 0, r = 0, k = 0;
+        s += s;
 
-        while (r < n) {
-            if (s[r] == '1') {
-            k = max(k, r - l + 1);
-        }
+        ll cur = 0, k = 0;
+
+        for (ll i = 0; i < 2 * n; i++) {
+            if (s[i] == '1') {
+                cur++;
+                k = max(k, min(cur, n));
+            }
             else {
-                l = r + 1;
-        }
-            r++;
-        }
-
-        ll pre = 0, suf = 0;
-
-        while (pre < n && s[pre] == '1') {
-            pre++;
+                cur = 0;
+            }
         }
 
-        while (suf < n && s[n - 1 - suf] == '1') {
-            suf++;
+        if (k == n) {
+            cout << n * n << '\n';
         }
-
-        k = max(k, min(n, pre + suf));
-
-        ll ans = ((k + 1) / 2) * ((k + 2) / 2);
-
-        
-        cout<<ans<<endl;
+        else {
+            ll ans = ((k + 1) / 2) * ((k + 2) / 2);
+            cout << ans << '\n';
+        }
     }
-    
+
     return 0;
 }
-
-
-/*
-
-Move-Item ".\B_JoJo_s_Incredible_Adventures.cpp" ".\1100\B_JoJo_s_Incredible_Adventures.cpp"
-git add "1100/B_JoJo_s_Incredible_Adventures.cpp"
-git commit -m "B_JoJo_s_Incredible_Adventures.cpp"
-git pull --rebase origin master
-git push origin master
-
-*/
