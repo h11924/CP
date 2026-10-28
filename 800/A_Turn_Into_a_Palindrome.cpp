@@ -56,9 +56,9 @@ int main() {
 
 /*
 
-Move-Item ".\A_AvtoBus.cpp" ".\800\A_Turn_Into_a_Palindrome.cpp"
-git add "800/A_Turn_Into_a_Palindrome.cpp"
-git commit -m "A_Turn_Into_a_Palindrome.cpp"
+Move-Item ".\A_Min_Max_Game.cpp" ".\800\A_Min_Max_Game.cpp"
+git add "800/A_Min_Max_Game.cpp.cpp"
+git commit -m "A_Min_Max_Game.cpp.cpp"
 git pull --rebase origin master
 git push origin master
 
