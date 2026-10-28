@@ -1,48 +1,45 @@
-//we are just returning the (n+1-a),the new permutaion 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define ll long long
 
-class Solution {
-public:
-    void  solve(int n, vector<int> &a){
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<long long, long long>;
+using vi = vector<int>;
+using vll = vector<long long>;
 
-        vector<int> ans;
-        for(int i=0;i<a.size();i++){
-            ans.push_back(n+1-a[i]);
-        }
-
-        for(int i=0;i<ans.size();i++){
-            cout<<ans[i]<<" ";
-        }
-
-
-    }
-};
-
-int main(){
-    // fast input output
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
-    int t;
-    cin>>t;
-    while(t--){
-        Solution sol;
-        int n ;
-        cin>>n;
-
-        vector<int> ans; // Corrected: Declare an empty vector 'a'
-        for(int i = 0; i < n; i++){
-            int temp;
-            cin >> temp;
-            ans.push_back(temp); // Corrected: Use push_back to add elements
-        }
-
-
-        sol.solve(n ,ans);
-        
-        cout<<endl;
-    }
+void fast_io() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 }
+
+void solve() {
+    
+}
+
+int main() {
+    fast_io();
+    
+    int t = 1;
+    cin >> t;
+    
+    while (t--) {
+        ll n,a,b;
+        cin>>n>>a>>b;
+
+        if ((a == n && b == n) || (a + b <= n - 2))             cout << "Yes\n";
+        else  cout<<"no"<<endl;
+    }
+    
+    return 0;
+}
+
+
+/*
+
+Move-Item ".\A_Two_Permutations.cpp" ".\800\A_Two_Permutations.cpp"
+git add "800/A_Two_Permutations.cpp"
+git commit -m "A_Two_Permutations.cpp"
+git pull --rebase origin master
+git push origin master
+
+*/

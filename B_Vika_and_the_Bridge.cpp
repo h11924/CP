@@ -1,0 +1,4 @@
+/**
+ * n planks,k paints 
+ * 
+ */
